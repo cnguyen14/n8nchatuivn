@@ -1,50 +1,86 @@
-# n8n Webhook Chat UI
+# Giao diện Chat Webhook n8n
 
-A beautiful glass morphism chat UI for testing n8n webhooks with custom variables.
+Một giao diện chat đẹp mắt với hiệu ứng glass morphism để kiểm tra webhook n8n với các biến tùy chỉnh.
 
-## Features
+## Tính năng
 
-- User authentication with Supabase
-- Beautiful glass morphism UI design
-- Chat interface for testing n8n webhooks
-- Custom variable configuration
-- Chat history based on session ID
-- Responsive design
+- Xác thực người dùng với Supabase
+- Thiết kế UI glass morphism đẹp mắt
+- Giao diện chat để kiểm tra webhook n8n
+- Cấu hình biến tùy chỉnh
+- Lịch sử chat dựa trên ID phiên
+- Thiết kế responsive
 
-## Setup
+## Cài đặt
 
-1. Clone the repository
-2. Install dependencies with `npm install`
-3. Create a `.env` file based on `.env.example` and add your Supabase credentials
-4. Run the development server with `npm run dev`
+1. Clone repository
+```bash
+git clone <repository-url>
+cd n8n-webhook-chat-ui
+```
 
-## Supabase Setup
+2. Cài đặt các gói phụ thuộc
+```bash
+npm install
+```
 
-You'll need to set up the following tables in your Supabase database:
+3. Tạo file `.env` dựa trên `.env.example` và thêm thông tin đăng nhập Supabase của bạn
+```bash
+cp .env.example .env
+```
 
-### webhook_settings
-- id (uuid, primary key)
-- user_id (uuid, foreign key to auth.users)
-- webhook_url (text)
-- custom_variables (jsonb)
-- created_at (timestamp with time zone)
+4. Chỉnh sửa file `.env` với thông tin Supabase của bạn
+```
+VITE_SUPABASE_URL=https://your-project-url.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+```
 
-### chat_messages
-- id (uuid, primary key)
-- session_id (uuid)
-- user_id (uuid, foreign key to auth.users)
-- content (text)
-- is_user (boolean)
-- created_at (timestamp with time zone)
+5. Chạy máy chủ phát triển
+```bash
+npm run dev
+```
 
-## Usage
+## Cài đặt Supabase
 
-1. Sign up or log in to your account
-2. Configure your n8n webhook URL in the Settings page
-3. Add any custom variables you want to include in webhook requests
-4. Start chatting to test your webhook
-5. View responses from your webhook in the chat interface
+### Tạo tài khoản và dự án Supabase
 
-## License
+1. Truy cập [Supabase](https://supabase.com/) và đăng ký tài khoản
+2. Tạo dự án mới
+3. Sau khi dự án được tạo, lấy URL và Anon Key từ phần "Settings" > "API"
+4. Cập nhật thông tin này vào file `.env` của bạn
 
-MIT
+### Thiết lập cơ sở dữ liệu
+
+Để thiết lập cơ sở dữ liệu, chỉ cần làm theo các bước đơn giản sau:
+
+1. Truy cập vào giao diện SQL Editor của Supabase từ dashboard
+2. Tạo một "New Query"
+3. Sao chép toàn bộ nội dung từ file `sql/schema.sql` trong dự án và dán vào editor
+4. Nhấn "Run" để thực thi các câu lệnh SQL
+
+Việc này sẽ tự động tạo tất cả các bảng cần thiết cho ứng dụng.
+
+
+### Tắt xác nhận email (quan trọng)
+
+Để đơn giản hóa quá trình đăng ký và đăng nhập trong môi trường phát triển, bạn nên tắt xác nhận email:
+
+1. Trong dashboard Supabase, vào "Authentication" > "Providers"
+2. Tìm phần "Email" và nhấp vào nút "Edit"
+3. Tắt tùy chọn "Confirm email" bằng cách bỏ chọn hộp kiểm
+4. Lưu thay đổi
+
+Với cài đặt này, người dùng có thể đăng ký và đăng nhập ngay lập tức mà không cần xác nhận email.
+
+## Sử dụng
+
+1. Đăng ký hoặc đăng nhập vào tài khoản của bạn
+2. Cấu hình URL webhook n8n trong trang Cài đặt
+3. Thêm bất kỳ biến tùy chỉnh nào bạn muốn đưa vào yêu cầu webhook
+4. Bắt đầu trò chuyện để kiểm tra webhook của bạn
+5. Xem phản hồi từ webhook trong giao diện trò chuyện
+
+## N8N webhook mẫu:
+1. Tải file n8n JSON trong thư mục n8nwebhook
+2. Upload lên n8n hosting
+3. Activate workflow sau đó vào ứng dụng, copy webhook trong cài đặt rồi bấm test PING để kiểm tra xem có kết nối hay chưa
