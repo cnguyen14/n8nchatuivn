@@ -15,7 +15,7 @@ Một giao diện chat đẹp mắt với hiệu ứng glass morphism để ki�
 
 1. Clone repository
 ```bash
-git clone [<https://github.com/cnguyen14/n8nchatuivn.git>]
+git clone https://github.com/cnguyen14/n8nchatuivn.git
 cd n8n-webhook-chat-ui
 ```
 
