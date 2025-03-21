@@ -1,0 +1,123 @@
+{
+  "name": "n8nchatui",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "abde7545-c7e9-46cd-b3e7-73b6cf5ddf74",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -920,
+        -100
+      ],
+      "id": "006185b4-24c7-43d5-ad48-cb33a522b75c",
+      "name": "Webhook",
+      "webhookId": "abde7545-c7e9-46cd-b3e7-73b6cf5ddf74"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        -80
+      ],
+      "id": "4bac0c6d-e8ce-4349-ab54-6f8c0a22cf99",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0f62ea98-aad7-45bc-bdec-03f52741845c",
+              "leftValue": "={{ $json.body.message.content }}",
+              "rightValue": "PING",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -560,
+        -100
+      ],
+      "id": "89476f9a-4f32-4565-b3c6-bc76b8ab722c",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -200,
+        -420
+      ],
+      "id": "87e09600-ba8e-4cbb-b65b-d3f84ba939b4",
+      "name": "Respond to PING"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Respond to PING",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c88e0030-d028-494e-80d1-0635d55c29d2",
+  "meta": {
+    "instanceId": "bdb0c4315ca3cb61c39445fc8188027600b7598c55f4a92f06bb79c0ec0b9ae9"
+  },
+  "id": "2AmSr2IuzvmDxvzJ",
+  "tags": []
+}

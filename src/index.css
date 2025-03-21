@@ -1,0 +1,728 @@
+/* 
+ * Tailwind CSS directives
+ * These directives are processed by the Tailwind CSS build process
+ * and are not standard CSS, which is why they trigger linting warnings.
+ * These warnings can be safely ignored.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #1e293b, #0f172a);
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Button click animation */
+@keyframes button-click {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-button-click {
+  animation: button-click 300ms ease-in-out;
+}
+
+/* Message animations */
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 500ms ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 500ms ease-out forwards;
+}
+
+/* Welcome screen animations */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 600ms ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 500ms ease-out forwards;
+  opacity: 0;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+/* Thinking animation - Border Glowing Style */
+.ai-thinking-indicator {
+  position: relative;
+  background-color: rgba(30, 41, 59, 0.8);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.ai-thinking-indicator::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(99, 102, 241, 0.7),
+    rgba(168, 85, 247, 0.8),
+    rgba(236, 72, 153, 0.7),
+    rgba(99, 102, 241, 0.7)
+  );
+  background-size: 300% 100%;
+  animation: border-glow 3s infinite linear;
+  box-shadow: 
+    0 0 10px rgba(99, 102, 241, 0.5),
+    0 0 20px rgba(168, 85, 247, 0.3),
+    0 0 30px rgba(236, 72, 153, 0.2);
+}
+
+@keyframes border-glow {
+  0% {
+    background-position: 0% 50%;
+    box-shadow: 
+      0 0 10px rgba(99, 102, 241, 0.5),
+      0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    background-position: 100% 50%;
+    box-shadow: 
+      0 0 15px rgba(168, 85, 247, 0.6),
+      0 0 25px rgba(168, 85, 247, 0.4),
+      0 0 35px rgba(168, 85, 247, 0.2);
+  }
+  100% {
+    background-position: 0% 50%;
+    box-shadow: 
+      0 0 10px rgba(99, 102, 241, 0.5),
+      0 0 20px rgba(99, 102, 241, 0.3);
+  }
+}
+
+/* Dot animation - New smoother style */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #a5b4fc, #818cf8);
+  display: inline-block;
+  margin: 0 2px;
+  box-shadow: 0 0 5px rgba(165, 180, 252, 0.5);
+}
+
+.dot-1 {
+  animation: dot-float 1.4s infinite ease-in-out;
+}
+
+.dot-2 {
+  animation: dot-float 1.4s infinite ease-in-out 0.2s;
+}
+
+.dot-3 {
+  animation: dot-float 1.4s infinite ease-in-out 0.4s;
+}
+
+@keyframes dot-float {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* Message bubble styling */
+.message-bubble {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+}
+
+/* Code block wrapper */
+.code-block-wrapper {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 1rem 0;
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.code-block-header {
+  background-color: #2c2c54;
+  padding: 0.5rem 1rem;
+  color: #d4d4d4;
+  font-family: monospace;
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.code-language {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #7ed6df;
+}
+
+/* Fix for SyntaxHighlighter */
+pre.react-syntax-highlighter {
+  margin: 0 !important;
+  padding: 1rem !important;
+  border-radius: 0 0 0.5rem 0.5rem !important;
+  max-width: 100% !important;
+}
+
+/* Ensure code highlighting works properly */
+.react-syntax-highlighter code {
+  font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+}
+
+/* Custom scrollbar for code blocks */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px !important;
+  width: 8px !important;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Ensure message width constraints */
+.flex.max-w-\[80\%\] {
+  max-width: 80% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Ensure code blocks don't break layout */
+.markdown-content > div {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Code block container */
+.code-block-container {
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* Critical fix for SyntaxHighlighter */
+.react-syntax-highlighter {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.react-syntax-highlighter pre {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+/* Ensure code blocks don't overflow */
+.markdown-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* Fix for long code lines */
+.react-syntax-highlighter code {
+  word-break: normal !important;
+  white-space: pre !important;
+}
+
+/* Ensure pre blocks don't overflow */
+.markdown-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Ensure code doesn't overflow */
+.markdown-content code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Fix for inline code */
+.markdown-content :not(pre) > code {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  white-space: normal;
+}
+
+/* Custom scrollbar for code blocks */
+.code-block-container::-webkit-scrollbar {
+  height: 8px !important;
+  width: 8px !important;
+}
+
+.code-block-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+.code-block-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+.code-block-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Ensure message width constraints */
+.flex.max-w-\[80\%\] {
+  width: fit-content;
+  max-width: 80% !important;
+}
+
+/* Force code blocks to stay within their containers */
+.code-block-wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  display: block !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Ensure code blocks have proper scrolling */
+.overflow-x-auto {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+/* Fix for pre elements */
+pre {
+  max-width: 100% !important;
+  white-space: pre !important;
+  overflow-x: auto !important;
+}
+
+/* Fix for code elements */
+code {
+  white-space: pre !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+/* Ensure message bubbles contain their content */
+.message-bubble {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+}
+
+/* Fix for the chat container */
+.flex.max-w-\[80\%\] {
+  max-width: 80% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Force code content to stay within bounds */
+.message-bubble code {
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Ensure code blocks don't overflow */
+.message-bubble pre,
+.message-bubble code {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+  white-space: pre;
+}
+
+/* Ensure code block container doesn't overflow */
+.overflow-x-auto {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Ensure code content is scrollable */
+.overflow-x-auto pre {
+  display: inline-block;
+  min-width: min-content;
+}
+
+/* Markdown content styling */
+.markdown-content p {
+  margin-bottom: 0.75rem;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.markdown-content h1 {
+  font-size: 1.5rem;
+}
+
+.markdown-content h2 {
+  font-size: 1.25rem;
+}
+
+.markdown-content h3 {
+  font-size: 1.125rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid #4a5568;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #a0aec0;
+}
+
+/* Fix for syntax highlighter */
+.react-syntax-highlighter-line-number {
+  user-select: none;
+  font-size: 0.8em !important;
+  opacity: 0.6 !important;
+  padding-right: 1em !important;
+  margin-right: 0.5em !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Make sure syntax highlighter respects container width */
+.react-syntax-highlighter {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+/* Fix for code blocks in the chat UI */
+pre[class*="language-"] {
+  margin: 0 !important;
+  border-radius: 0 0 0.5rem 0.5rem !important;
+  background-color: #1a1a1a !important;
+  padding: 0.5rem 0 !important;
+}
+
+/* Add spacing between code lines */
+.react-syntax-highlighter-line {
+  padding: 0 0.5rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Highlight line on hover */
+.react-syntax-highlighter-line:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Ensure code content is properly contained */
+.markdown-content pre code {
+  white-space: pre;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  display: inline-block;
+  min-width: 100%;
+}
+
+/* Ensure code doesn't break layout */
+.markdown-content code {
+  font-family: 'Fira Code', monospace;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+/* Inline code should wrap properly */
+.markdown-content :not(pre) > code {
+  white-space: normal;
+  word-break: break-all;
+}
+
+/* Fix for code blocks in dark mode */
+.dark pre[class*="language-"] {
+  background-color: #1a1a1a !important;
+}
+
+/* Fix for code block language display */
+.code-block-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Fix for SyntaxHighlighter to enable scrolling */
+.scrollable-code > pre {
+  overflow: auto !important;
+  max-width: 100% !important;
+}
+
+/* Make sure the code container allows scrolling */
+.scrollable-code > div {
+  overflow: visible !important;
+  max-width: 100% !important;
+}
+
+/* Ensure long lines don't break */
+.scrollable-code code {
+  white-space: pre !important;
+}
+
+/* Fix for horizontal scrolling */
+.scrollable-code pre > code {
+  display: inline-block;
+  min-width: 100%;
+}
+
+/* Fix for code block width issues */
+.react-syntax-highlighter {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+/* Ensure code blocks don't expand message width */
+.message-bubble .prose {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix for message bubble layout */
+.message-bubble > div {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Fix for code block scrolling */
+.scrollable-code {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+/* Ensure code content doesn't overflow */
+.message-bubble code {
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Ensure code blocks don't overflow */
+.message-bubble pre,
+.message-bubble code {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+  white-space: pre;
+}
+
+/* Ensure code block container doesn't overflow */
+.overflow-x-auto {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Ensure code content is scrollable */
+.overflow-x-auto pre {
+  display: inline-block;
+  min-width: min-content;
+}
+
+/* Critical fix for code overflow */
+.react-syntax-highlighter pre code {
+  display: inline-block !important;
+  max-width: none !important;
+  white-space: pre !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+}
+
+/* Fix for SyntaxHighlighter container */
+.react-syntax-highlighter-container {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+/* Ensure horizontal scrolling works properly */
+.code-block-container {
+  overflow-x: auto !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Ensure code blocks don't break layout */
+.markdown-content > div {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix for code blocks in message bubbles */
+.message-bubble .markdown-content pre {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+/* Border glow animation */
+@keyframes border-glow {
+  0% {
+    border-color: rgba(79, 70, 229, 0.6); /* indigo-600 */
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+  }
+  33% {
+    border-color: rgba(147, 51, 234, 0.6); /* purple-600 */
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
+  }
+  66% {
+    border-color: rgba(219, 39, 119, 0.6); /* pink-600 */
+    box-shadow: 0 0 15px rgba(219, 39, 119, 0.4);
+  }
+  100% {
+    border-color: rgba(79, 70, 229, 0.6); /* indigo-600 */
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+  }
+}
+
+.border-glow {
+  animation: border-glow 6s infinite;
+  border-width: 2px;
+}
+
+/* Input focus glow */
+.input-focus-glow:focus {
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
+  border-color: rgba(79, 70, 229, 0.8) !important;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Button hover animation */
+@keyframes button-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+  }
+}
+
+.btn-pulse:hover {
+  animation: button-pulse 1.5s infinite;
+}
